@@ -1,0 +1,35 @@
+[
+  {
+    "image": "https://i.ibb.co/h2v1yCd/home-banner.png",
+    "tourists_spot_name": "Cox's Bazar",
+    "country_Name": "Bangladesh",
+    "location": "Cox's Bazar",
+    "short_description": "Home to the world's longest natural sea beach, stretching over 120 kilometers.",
+    "average_cost": 5000,
+    "seasonality": "Winter",
+    "travel_time": "5 days",
+    "totalVisitorsPerYear": 2500000
+  },
+  {
+    "image": "https://i.ibb.co/CKRqF6S/ashraful-islam-z-Zn-l-ODGCms-unsplash.jpg",
+    "tourists_spot_name": "Sundarbans",
+    "country_Name": "Bangladesh",
+    "location": "Khulna",
+    "short_description": "The largest mangrove forest in the world, home to the Bengal tiger.",
+    "average_cost": 7000,
+    "seasonality": "Winter",
+    "travel_time": "7 days",
+    "totalVisitorsPerYear": 1200000
+  },
+  {
+    "image": "https://i.ibb.co/Mg262Js/expressive-capture-TM-W3s-VKZh8-unsplash.jpg",
+    "tourists_spot_name": "Srimangal",
+    "country_Name": "Bangladesh",
+    "location": "Moulvibazar",
+    "short_description": "Known as the tea capital of Bangladesh, famous for its lush tea gardens and rainforests.",
+    "average_cost": 4000,
+    "seasonality": "Summer",
+    "travel_time": "3 days",
+    "totalVisitorsPerYear": 300000
+  }
+]

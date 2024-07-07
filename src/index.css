@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.menu li > *:not(ul, .menu-title, details, .btn):active, .menu li > *:not(ul, .menu-title, details, .btn).active, .menu li > details > summary:active {
+    --tw-bg-opacity: 1;
+    background-color: oklch(0.53 0.12 207.39);
+    --tw-text-opacity: 1;
+    color: oklch(1 0 0);
+}
+span {
+    font-size: 20px;
+    font-weight: 600;
+}
