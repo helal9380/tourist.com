@@ -2,10 +2,30 @@
 
 import { Link } from "react-router-dom";
 import loginImage from "../../assets/login.jpg";
+import { useContext } from "react";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+
 const Register = () => {
+    const {createUser} = useContext(AuthContext)
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const name = form.name.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        const newUser = {name, email};
+        console.log(name, email,password);
+        createUser(email, password)
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
   return (
     <div className="hero max-w-screen-md mx-auto">
-      <form className="w-full border-2 border-[#007E8F] shadow-2xl rounded p-5 flex gap-2 flex-row-reverse">
+      <form onSubmit={handleSubmit} className="w-full border-2 border-[#007E8F] shadow-2xl rounded p-5 flex gap-2 flex-row-reverse">
         <div className="w-1/2">
           <h2 className="uppercase font-semibold mb-2 text-center text-[#007E8F] text-3xl">
             Register now!

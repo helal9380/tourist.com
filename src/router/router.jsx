@@ -6,6 +6,10 @@ import Home from "../Pages/Home";
 import AddTourist from "../Pages/AddTourist/AddTourist";
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
+import PrivateRoute from "./PrivateRoute";
+import AllTouristSpot from "../Pages/AllTouristSpot/AllTouristSpot";
+import AllTouristDetails from "../Pages/AllTouristSpot/AllTouristDetails";
+import Carts from "../Pages/AllTouristSpot/Carts";
 
   const router = createBrowserRouter([
     {
@@ -26,8 +30,22 @@ import Register from "../Pages/Register/Register";
             element: <Register></Register>
         },
         {
+            path: '/allTouristSpot',
+            element: <AllTouristSpot></AllTouristSpot>
+        },
+        {
+            path: '/allTouristSpot/details/:id',
+            element: <PrivateRoute><Carts></Carts></PrivateRoute>,
+            loader: ({params}) => fetch(`http://localhost:5000/tourist/${params.id}`)
+        },
+        {
+            path: '/carts',
+            element: <PrivateRoute><Carts></Carts></PrivateRoute>,
+            loader: () => fetch('http://localhost:5000/carts'),
+        },
+        {
             path: '/addTourist',
-            element: <AddTourist></AddTourist>
+            element: <PrivateRoute><AddTourist></AddTourist></PrivateRoute>
         }
       ]
     },

@@ -1,8 +1,28 @@
 /** @format */
 
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navber = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogout = () => {
+    logOut()
+    .then(() => {
+      Swal.fire({
+        position: "top-end",
+        icon: "success",
+        title: "Log out successfully",
+        showConfirmButton: false,
+        timer: 2000
+      });
+      location.reload()
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
   const links = (
     <>
       <li>
@@ -10,7 +30,13 @@ const Navber = () => {
       </li>
 
       <li>
-        <NavLink to={"/addTourist"}>Add tourist</NavLink>
+        <NavLink to={"/addTourist"}>Add tourist spot</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/allTouristSpot"}>All Tourist Spots</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/carts"}>My Carts</NavLink>
       </li>
     </>
   );
@@ -42,14 +68,23 @@ const Navber = () => {
             {links}
           </ul>
         </div>
-        <a className="text-4xl pl-4 font-bold text-[#007E8F]">ExploreBD.com
-        </a>
+        <a className="text-4xl pl-4 font-bold text-[#007E8F]">ExploreBD.com</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal space-x-2 px-1">{links}</ul>
+        <ul className="menu menu-horizontal space-x-2 px-1 text-lg font-semibold">{links}</ul>
       </div>
       <div className="navbar-end">
-        <Link to={'/login'} className=" text-white font-semibold py-1 px-5 bg-[#007E8F] rounded-lg border border-[#007E8F]">Login</Link>
+        {user ? (
+          <button onClick={handleLogout} className=" text-white font-semibold py-1 px-5 bg-[#007E8F] rounded-lg border border-[#007E8F]">
+            Log out
+          </button>
+        ) : (
+          <Link
+            to={"/login"}
+            className=" text-white font-semibold py-1 px-5 bg-[#007E8F] rounded-lg border border-[#007E8F]">
+            Login
+          </Link>
+        )}
       </div>
     </div>
   );

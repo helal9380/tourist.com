@@ -1,8 +1,11 @@
 /** @format */
 
+import { useContext } from "react";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
 
 const AddTourist = () => {
+  const {user} = useContext(AuthContext)
     const handleAddTourist = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -15,8 +18,10 @@ const AddTourist = () => {
         const seasonality = form.seasonality.value;
         const time = form.time.value;
         const total_visitors = form.total_visitors.value;
-        const newTourist = {name, country, location, image, description, cost, seasonality,time, total_visitors};
-
+        const userName = user.displayName;
+        const email = user.email;
+        const newTourist = {name, userName, email, country, location, image, description, cost, seasonality,time, total_visitors};
+        console.log(newTourist);
         fetch('http://localhost:5000/tourist', {
           method: 'POST',
           headers: {
